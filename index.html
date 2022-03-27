@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignalR Chat</title>
+    <link rel="stylesheet" type="text/css" href="./style/reset-css.css">
+    <link rel="stylesheet" type="text/css" href="./style/bootstrap.min.css">
+
+    <style>
+        #send-wrapper {
+            display: flex;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 10px;
+        }
+
+        #messages {
+            height: 93vh;
+            overflow: auto;
+        }
+
+        #message {
+            width: 90%;
+        }
+
+        #login-wrapper form {
+            margin-top: 15%;
+        }
+
+        #send-button {
+            width: 10%;
+        }
+
+        .message-divider {
+            height: 2px;
+            background-color: black;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+</head>
+<body>
+<div id="chat-wrapper">
+    <div id="messages"></div>
+    <hr class="message-divider"/>
+    <div id="send-wrapper">
+        <input type="text" class="form-control" id="message" placeholder="Type message...">
+        <button id="send-button" class="btn btn-info">Send</button>
+    </div>
+</div>
+<div id="login-wrapper">
+    <form id="login-form" class="form w-25 mx-auto">
+        <h1 class="text-center">Login</h1>
+        <div class="form-group">
+            <label for="login-username">Username:</label>
+            <input id="login-username" class="form-control" type="text" name="username" placeholder="Username..."/>
+        </div>
+        <div class="form-group">
+            <label for="login-password">Password:</label>
+            <input id="login-password" class="form-control" type="text" name="password" placeholder="Password..."/>
+        </div>
+        <div class="button-holder d-flex justify-content-around">
+            <button type="button" id="login-button" class="btn btn-info">Login</button>
+            <button type="button" id="register-redirect-button" class="btn btn-info">Register</button>
+        </div>
+    </form>
+    <form id="register-form" class="form w-25 mx-auto">
+        <h1 class="text-center">Register</h1>
+        <div class="form-group">
+            <label for="register-username">Username:</label>
+            <input id="register-username" class="form-control" type="text" name="username" placeholder="Username..."/>
+        </div>
+        <div class="form-group">
+            <label for="register-password">Password:</label>
+            <input id="register-password" class="form-control" type="text" name="password" placeholder="Password..."/>
+        </div>
+        <div class="form-group">
+            <label for="register-confirm-password">Confirm Password:</label>
+            <input id="register-confirm-password" class="form-control" type="text" name="confirmPassword" placeholder="Confirm Password..."/>
+        </div>
+        <div class="button-holder d-flex justify-content-around">
+            <button type="button" id="register-button" class="btn btn-info">Register</button>
+            <button type="button" id="login-redirect-button" class="btn btn-info">Login</button>
+        </div>
+    </form>
+</div>
+<script src="messages.js"></script>
+<script src="app.js"></script>
+<script src="core.js"></script>
+</body>
+</html>
