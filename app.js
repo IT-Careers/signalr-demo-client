@@ -7,14 +7,14 @@ const attemptChatLogin = () => {
     if (config.loginToken) {
         config.username = JSON.parse(atob(localStorage.token.split('.')[1])).Username;
         const connection = new signalR.HubConnectionBuilder()
-            .withUrl("https://localhost:7116/chat")
+            .withUrl(constants.baseUrl + '/chat')
             .configureLogging(signalR.LogLevel.Information)
             .build();
 
         async function start() {
             try {
                 await connection.start();
-                console.log("SignalR Connected.");
+                console.log('SignalR Connected.');
             } catch (err) {
                 console.log(err);
                 setTimeout(start, 5000);
@@ -25,8 +25,8 @@ const attemptChatLogin = () => {
             await start();
         });
 
-        connection.on("ReceiveMessage", (message) => {
-            const h1 = document.createElement("h1");
+        connection.on('ReceiveMessage', (message) => {
+            const h1 = document.createElement('h1');
             h1.textContent = `${message}`;
             document.getElementById('messages').appendChild(h1);
         });
@@ -35,8 +35,8 @@ const attemptChatLogin = () => {
             const message = document.getElementById('message').value;
 
             if (message) {
-                await connection.invoke("SendMessage", config.username, message);
-                document.getElementById('message').value = "";
+                await connection.invoke('SendMessage', config.username, message);
+                document.getElementById('message').value = '';
             }
         });
 

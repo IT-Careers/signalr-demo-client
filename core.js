@@ -35,7 +35,7 @@ document.getElementById('login-button').addEventListener('click', () => {
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
 
-    fetch('https://localhost:7116/Users/Login', {
+    fetch(constants.baseUrl + '/Users/Login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -57,7 +57,7 @@ document.getElementById('register-button').addEventListener('click', () => {
     const password = document.getElementById('register-password').value;
     const confirmPassword = document.getElementById('register-confirm-password').value;
 
-    fetch('https://localhost:7116/Users/Register', {
+    fetch(constants.baseUrl + '/Users/Register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

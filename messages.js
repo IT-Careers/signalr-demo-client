@@ -1,4 +1,4 @@
 const getAllMessages = () => {
-    return fetch('https://localhost:7116/Messages')
+    return fetch(constants.baseUrl + '/Messages')
         .then(res => res.json());
 }
